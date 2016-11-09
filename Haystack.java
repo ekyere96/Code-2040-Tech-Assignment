@@ -32,15 +32,15 @@ public class Haystack extends HttpPost {
 			                
 				            String param2 = "{ \"token\":\"9de8c90bab0ff108fa09081b925a47c1\",\"needle\":\"" + i + "\"}";
 				            URL url2 = new URL("http://challenge.code2040.org/api/haystack/validate");
-						    URLConnection conn2 = url2.openConnection();
-						    conn2.setDoOutput(true);
-						    conn2.setRequestProperty("Content-Type", "application/json");
-						    OutputStreamWriter writer2 = new OutputStreamWriter(conn2.getOutputStream());
-						    writer2.write(param2);
-						    writer2.flush();
-						    String line2;
-						    BufferedReader reader2 = new BufferedReader(new InputStreamReader(conn2.getInputStream()));
-						    while ((line2 = reader2.readLine()) != null) {
+					    URLConnection conn2 = url2.openConnection();
+				            conn2.setDoOutput(true);
+				            conn2.setRequestProperty("Content-Type", "application/json");
+					    OutputStreamWriter writer2 = new OutputStreamWriter(conn2.getOutputStream());
+					    writer2.write(param2);
+					    writer2.flush();
+					    String line2;
+					    BufferedReader reader2 = new BufferedReader(new InputStreamReader(conn2.getInputStream()));
+					    while ((line2 = reader2.readLine()) != null) {
 						      System.out.println(line2);
 						    }
 				      	  }
