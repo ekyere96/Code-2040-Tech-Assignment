@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 public class DatingGame extends HttpPost {
 	  public static void main(String[] args) throws Exception {
+		  //HTTP POST
 		    URL url = new URL("http://challenge.code2040.org/api/dating");
 		    URLConnection conn = url.openConnection();
 		    conn.setDoOutput(true);
@@ -25,7 +26,7 @@ public class DatingGame extends HttpPost {
 		    while ((line = reader.readLine()) != null) {
 			      System.out.println(line);
 		    
-
+		//Parse Keys
 		      JSONObject jsonObject = new JSONObject(line);
 		      String datestamp = jsonObject.getString("datestamp");
 		      int interval = (jsonObject.getInt("interval"));
@@ -34,16 +35,17 @@ public class DatingGame extends HttpPost {
 		      sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 		      Date sec = sdf.parse(datestamp);
 		      System.out.println(datestamp);
-		      
+			    
+		//Add Interval to Date Stamp
 		      long a = sec.getTime();
 		      long b = (a + (interval * 1000));
-		      
+		//Conversion of long to ISO 8601
 		      	Date date=new Date(b);
 		        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		        df2.setTimeZone(TimeZone.getTimeZone("UTC"));
 		        String validTime = df2.format(date);
 
-		    
+		//HTTP Post to Validate
 		      String param2 = "{ \"token\":\"9de8c90bab0ff108fa09081b925a47c1\",\"datestamp\":\"" + validTime + "\"}";
 		      System.out.println(param2);
 		      URL url2 = new URL("http://challenge.code2040.org/api/dating/validate");
